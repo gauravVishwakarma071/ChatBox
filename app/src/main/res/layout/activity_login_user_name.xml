@@ -72,11 +72,12 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter your username"
+        android:text="Enter Your Username"
         android:layout_gravity="center_vertical"
         android:layout_weight="5"
         android:letterSpacing="0.08"
         android:textSize="25dp"
+        android:textColor="@color/hint"
         android:textStyle="bold"/>
 
     <LinearLayout
@@ -93,7 +94,10 @@
             android:background="@drawable/edit_text_rounded_corner"
             android:elevation="5dp"
             android:hint="username"
+            android:textColorHint="@color/light_grey"
+
             android:inputType="number"
+            android:textColor="@color/black"
             android:minHeight="48dp"
             android:maxLength="6"
             android:padding="10dp"
