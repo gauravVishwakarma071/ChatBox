@@ -72,12 +72,12 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
-        android:text="Enter OTP code"
-=======
+
+
+
         android:text="Enter OTP Code"
         android:textColor="@color/hint"
->>>>>>> 0534780 (This Is ChatBox Commit which Is A Chatting App Project.)
+
         android:layout_gravity="center_vertical"
         android:layout_weight="5"
         android:letterSpacing="0.08"
@@ -98,11 +98,9 @@
             android:background="@drawable/edit_text_rounded_corner"
             android:elevation="5dp"
             android:hint="OTP"
-<<<<<<< HEAD
-=======
             android:textColorHint="@color/light_grey"
             android:textColor="@color/black"
->>>>>>> 0534780 (This Is ChatBox Commit which Is A Chatting App Project.)
+
             android:inputType="number"
             android:minHeight="48dp"
             android:maxLength="6"
@@ -135,10 +133,10 @@
         android:id="@+id/resend_otp_textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
-=======
+
+
         android:textColor="@color/black"
->>>>>>> 0534780 (This Is ChatBox Commit which Is A Chatting App Project.)
+
         android:layout_weight="10"
         android:gravity="center"
         android:text="Resend OTP in 30 sec"/>
