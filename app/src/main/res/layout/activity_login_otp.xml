@@ -75,7 +75,7 @@
 
 
 
-        android:text="Enter OTP Code"
+        android:text=" Enter OTP Code "
         android:textColor="@color/hint"
 
         android:layout_gravity="center_vertical"

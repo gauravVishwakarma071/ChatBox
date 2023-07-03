@@ -72,7 +72,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter Your Username"
+        android:text=" Enter Your Username"
         android:layout_gravity="center_vertical"
         android:layout_weight="5"
         android:letterSpacing="0.08"
