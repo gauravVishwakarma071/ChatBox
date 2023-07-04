@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.example.chatbox.utils.FirebaseUtil;
+
 public class SplashAcivity extends AppCompatActivity {
 
     @Override
@@ -16,9 +18,14 @@ public class SplashAcivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashAcivity.this,LoginPhoneNumberActivity.class));
+                if(FirebaseUtil.isLoggedIn()){
+                    startActivity(new Intent(SplashAcivity.this,MainActivity.class));
+                }else{
+                    startActivity(new Intent(SplashAcivity.this,LoginPhoneNumberActivity.class));
+                }
+
                 finish();
             }
-        },3000);
+        },1000);
     }
 }

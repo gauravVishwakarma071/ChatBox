@@ -33,7 +33,7 @@ public class LoginOtpActivity extends AppCompatActivity {
 
     String phoneNumber;
     Long timeOutSeconds = 60L;
-    String verification;
+    String verificationCode;
     PhoneAuthProvider.ForceResendingToken resendingToken;
     
     EditText otpInput;
@@ -59,9 +59,9 @@ public class LoginOtpActivity extends AppCompatActivity {
         //On click nextBtn it check the otp if it is true then user will seen next activity.
         nextBtn.setOnClickListener(v -> {
             String enteredOtp = otpInput.getText().toString();
-           PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verification,enteredOtp);
-           signIn(credential);
-           setInProgress(true);//it will take some / show progress bar.
+            PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode,enteredOtp);
+            signIn(credential);
+            setInProgress(true);//it will take some / show progress bar.
         });
 
 
@@ -98,7 +98,7 @@ public class LoginOtpActivity extends AppCompatActivity {
                             @Override
                             public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                                 super.onCodeSent(s, forceResendingToken);
-                                verification  = s;
+                                verificationCode  = s;
                                 resendingToken = forceResendingToken;
                                 AndroidUtil.showToast(getApplication(),"OTP varification successfully");
                                 setInProgress(false);
@@ -133,6 +133,7 @@ public class LoginOtpActivity extends AppCompatActivity {
                 setInProgress(false);
                 if (task.isSuccessful()){
                     Intent intent = new Intent(LoginOtpActivity.this,LoginUserNameActivity.class);
+                    intent.putExtra("phone",phoneNumber);
                     startActivity(intent);
                 }else{
                     AndroidUtil.showToast(getApplication(),"OTP verification failed");
@@ -142,7 +143,7 @@ public class LoginOtpActivity extends AppCompatActivity {
     }
     //setting timer for sending login otp
     void startResendTimer(){
-        resendOtpTextView.setEnabled(false);
+        resendOtpTextView.setEnabled(false); //change idea
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
