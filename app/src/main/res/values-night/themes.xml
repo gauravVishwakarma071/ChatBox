@@ -3,7 +3,7 @@
     <style name="Theme.ChatBox" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/my_primary</item>
-        <item name="colorPrimaryVariant">@color/my_primary</item>
+        <item name="colorPrimaryVariant">@color/my_primarV</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/my_secondary</item>

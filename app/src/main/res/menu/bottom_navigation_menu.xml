@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:title="Chats"
-        android:icon="@drawable/chat_icon"
-        android:id="@+id/menu_chat"
-        android:iconTint="@color/black"
-
-        />
+        android:title="chats"
+        android:icon="@drawable/chat_view"
+        android:id="@+id/menu_chat"/>
     <item
-        android:title="Profile"
-        android:icon="@drawable/person_icon"
-        android:iconTint="@color/black"
-        android:id="@+id/menu_profile"
-
-        />
+        android:title="profile"
+        android:icon="@drawable/profile_view"
+        android:id="@+id/menu_profile"/>
 </menu>
