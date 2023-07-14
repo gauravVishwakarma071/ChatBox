@@ -98,7 +98,7 @@
             android:textColorHint="@color/light_grey"
             android:textColor="@color/black"
             android:minHeight="48dp"
-            android:maxLength="6"
+            android:maxLength="15"
             android:padding="10dp"
             android:layout_weight="5"
             tools:ignore="TouchTargetSizeCheck" />
