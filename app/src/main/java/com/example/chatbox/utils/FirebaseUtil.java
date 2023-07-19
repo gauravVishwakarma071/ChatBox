@@ -31,6 +31,11 @@ public class FirebaseUtil {
     public static DocumentReference getChatroomReference(String chatroomId){
         return FirebaseFirestore.getInstance().collection("chatrooms").document(chatroomId);
     }
+
+    public static CollectionReference getChatroomMessageReference(String chatroomId){
+        return getChatroomReference(chatroomId).collection("chats");
+    }
+
     //create uqiue catroomID using hashcode
     public static String getChatroomId(String userId1,String userId2){
         if(userId1.hashCode()<userId2.hashCode()){
