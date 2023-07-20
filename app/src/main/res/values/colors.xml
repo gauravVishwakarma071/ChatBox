@@ -9,5 +9,8 @@
     <color name="light_grey">#C3C3C3</color>
     <color name="hint">#504F4F</color>
 
+    <color name="chat_message_sender">#1E88E5</color>
+    <color name="chat_message_receiver">#7CB342</color>
+
     //(blue(#2196F3 #03A9F4))(original(FF5964 FFE74C))
 </resources>
