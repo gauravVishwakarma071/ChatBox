@@ -1,21 +1,16 @@
 package com.example.chatbox;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +18,8 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     ImageButton searchButton;
 
-    ChatFragment chatFragment;
+
+    ChatRecentFrag recentChatFrag;
     ProfileFragment profileFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
             Toast.makeText(this, "Still in development phase", Toast.LENGTH_SHORT).show();
 
-        chatFragment = new ChatFragment();
+
+        recentChatFrag = new ChatRecentFrag();
         profileFragment = new ProfileFragment();
 
         //Finding ID of bottom navigation view and search button.
@@ -51,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getItemId()==R.id.menu_chat){
-                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout,chatFragment).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout,recentChatFrag).commit();
                     Toast.makeText(MainActivity.this, "Your chats", Toast.LENGTH_SHORT).show();
                 }
                 if(item.getItemId()==R.id.menu_profile){

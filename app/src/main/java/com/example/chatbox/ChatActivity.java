@@ -1,22 +1,20 @@
 package com.example.chatbox;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
-
 import com.example.chatbox.adapter.ChatRecyclerAdapter;
-import com.example.chatbox.adapter.SearchUserRecyclerAdapter;
 import com.example.chatbox.model.ChatMessageModel;
-import com.example.chatbox.model.UserModel;
 import com.example.chatbox.model.ChatroomModel;
+import com.example.chatbox.model.UserModel;
 import com.example.chatbox.utils.AndroidUtil;
 import com.example.chatbox.utils.FirebaseUtil;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -24,11 +22,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.ktx.Firebase;
 
-import java.sql.Time;
 import java.util.Arrays;
 
 public class ChatActivity extends AppCompatActivity {
@@ -108,6 +103,7 @@ public class ChatActivity extends AppCompatActivity {
 
         chatroomModel.setLastMessageTimestamp(Timestamp.now());
         chatroomModel.setLastMessageSenderId(FirebaseUtil.currentUserId());
+        chatroomModel.setLastMessage(message);
         FirebaseUtil.getChatroomReference(chatroomId).set(chatroomModel);
 
         ChatMessageModel chatMessageModel = new ChatMessageModel(message,FirebaseUtil.currentUserId(),Timestamp.now());
