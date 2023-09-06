@@ -42,7 +42,7 @@ public class ChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-        
+
         //get UserModel
         otherUser = AndroidUtil.getUserModelFromIntent(getIntent());
         //
@@ -71,9 +71,10 @@ public class ChatActivity extends AppCompatActivity {
         });
 
         getOrCreateChatroomModel();
-
         setupChatRecyclerView();
+
     }
+
     //set up chatRecyclerView
     void setupChatRecyclerView(){
         Query query = FirebaseUtil.getChatroomMessageReference(chatroomId)
@@ -136,4 +137,5 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
     }
+
 }

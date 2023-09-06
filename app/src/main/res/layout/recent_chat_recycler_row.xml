@@ -27,12 +27,14 @@
                 android:layout_height="wrap_content"
                 tools:text="User name"
                 android:textSize="18sp"
+                android:textColor="@color/hint"
                 android:textStyle="bold"
                 android:id="@+id/user_name_text"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="10:00"
+                android:textColor="@color/hint"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="10dp"
                 android:id="@+id/last_message_time_text"/>
@@ -41,7 +43,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="+000000000000"
+            tools:text="no message yet"
+            android:textColor="@color/hint"
             android:id="@+id/last_message_text"/>
     </LinearLayout>
 </LinearLayout>

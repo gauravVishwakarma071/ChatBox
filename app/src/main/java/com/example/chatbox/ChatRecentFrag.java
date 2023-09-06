@@ -26,8 +26,7 @@ public class ChatRecentFrag extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_chat_recent, container, false);
         recyclerView = view.findViewById(R.id.recycler_view);
@@ -39,7 +38,7 @@ public class ChatRecentFrag extends Fragment {
 
         //If matches the usernames it will return all the usernames.
         Query query = FirebaseUtil.allChatroomCollectionReference()
-                .whereArrayContains("userIds",FirebaseUtil.currentUserId())
+                .whereArrayContains("userId",FirebaseUtil.currentUserId())
                 .orderBy("lastMessageTimestamp",Query.Direction.DESCENDING);
 
         FirestoreRecyclerOptions<ChatroomModel> option = new FirestoreRecyclerOptions.Builder<ChatroomModel>()
