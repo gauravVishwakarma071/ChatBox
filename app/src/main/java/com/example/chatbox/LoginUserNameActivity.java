@@ -1,14 +1,14 @@
 package com.example.chatbox;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.chatbox.model.UserModel;
 import com.example.chatbox.utils.FirebaseUtil;
@@ -47,6 +47,7 @@ public class LoginUserNameActivity extends AppCompatActivity {
 
     //method for set username VII.
     void setUsername(){
+
         String username = usernameInput.getText().toString();
         if(username.isEmpty() || username.length()<3){
             usernameInput.setError("Username length should be at least 3 chars");
