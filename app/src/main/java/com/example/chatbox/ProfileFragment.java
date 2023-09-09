@@ -1,6 +1,8 @@
 package com.example.chatbox;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,11 +13,18 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.chatbox.model.UserModel;
 import com.example.chatbox.utils.AndroidUtil;
 import com.example.chatbox.utils.FirebaseUtil;
+import com.github.dhaval2404.imagepicker.ImagePicker;
+
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 
 public class ProfileFragment extends Fragment {
@@ -28,10 +37,29 @@ public class ProfileFragment extends Fragment {
     TextView logoutBtn;
     
     UserModel currentUserModel;
+    ActivityResultLauncher<Intent> imagePickLauncher;
+    Uri selectedImageUri;
 
     public ProfileFragment() {
 
     }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        imagePickLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == Activity.RESULT_OK){
+                        Intent data = result.getData();
+                        if(data!=null && data.getData()!=null){
+                            selectedImageUri = data.getData();
+                            AndroidUtil.setProfilePic(getContext(),selectedImageUri,profilePic);//last time 9.9.23
+                        }
+                    }
+                }
+                );
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -54,6 +82,19 @@ public class ProfileFragment extends Fragment {
            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
            startActivity(intent);
         });
+
+        profilePic.setOnClickListener(v -> {
+            ImagePicker.with(this).cropSquare().compress(512).maxResultSize(512,512)
+                    .createIntent(new Function1<Intent, Unit>() {
+                        @Override
+                        public Unit invoke(Intent intent) {
+                            imagePickLauncher.launch(intent);
+                            return null;
+                        }
+                    });
+        });
+
+
         return view;
     }
 
