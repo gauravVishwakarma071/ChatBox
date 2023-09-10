@@ -44,6 +44,7 @@ public class ProfileFragment extends Fragment {
 
     }
 
+    // picker image
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +54,7 @@ public class ProfileFragment extends Fragment {
                         Intent data = result.getData();
                         if(data!=null && data.getData()!=null){
                             selectedImageUri = data.getData();
-                            AndroidUtil.setProfilePic(getContext(),selectedImageUri,profilePic);//last time 9.9.23
+                            AndroidUtil.setProfilePic(getContext(),selectedImageUri,profilePic);
                         }
                     }
                 }
@@ -83,6 +84,7 @@ public class ProfileFragment extends Fragment {
            startActivity(intent);
         });
 
+        //image picker launcher
         profilePic.setOnClickListener(v -> {
             ImagePicker.with(this).cropSquare().compress(512).maxResultSize(512,512)
                     .createIntent(new Function1<Intent, Unit>() {
@@ -106,7 +108,16 @@ public class ProfileFragment extends Fragment {
         }
         currentUserModel.setUsername(newUsername);
         setInProgress(true);
-        updateToFirestore();
+
+        // updating profile changes to firebase
+        if(selectedImageUri!=null){
+            FirebaseUtil.getCurrentProfilePicStorageRef().putFile(selectedImageUri)
+                    .addOnCompleteListener(task -> {
+                        updateToFirestore();
+                    });
+        }else{
+            updateToFirestore();
+        }
     }
 
     void updateToFirestore(){
@@ -123,6 +134,15 @@ public class ProfileFragment extends Fragment {
 
     void getUserData(){
         setInProgress(true);
+
+        FirebaseUtil.getCurrentProfilePicStorageRef().getDownloadUrl()
+                        .addOnCompleteListener(task -> {
+                           if(task.isSuccessful()){
+                               Uri uri = task.getResult();
+                               AndroidUtil.setProfilePic(getContext(),uri,profilePic);
+                           }
+                        });
+
         FirebaseUtil.currentUserDetails().get().addOnCompleteListener(task -> {
             setInProgress(false);
             currentUserModel = task.getResult().toObject(UserModel.class);

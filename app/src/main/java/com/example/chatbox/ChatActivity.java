@@ -1,9 +1,11 @@
 package com.example.chatbox;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -32,7 +34,7 @@ public class ChatActivity extends AppCompatActivity {
     String chatroomId;
     ChatroomModel chatroomModel;
     ChatRecyclerAdapter adapter;
-
+    ImageView imageView;
     EditText messageInput;
     ImageButton sendMessageBtn;
     ImageButton backBtn;
@@ -53,6 +55,16 @@ public class ChatActivity extends AppCompatActivity {
         backBtn = findViewById(R.id.back_btn);
         otherUsername = findViewById(R.id.other_username);
         recyclerView = findViewById(R.id.chat_recycler_view);
+        imageView = findViewById(R.id.profile_pic_image_view);
+
+        // to set profile picture xviii
+        FirebaseUtil.getOtherProfilePicStorageRef(otherUser.getUserId()).getDownloadUrl()
+                .addOnCompleteListener(t -> {
+                    if(t.isSuccessful()){
+                        Uri uri = t.getResult();
+                        AndroidUtil.setProfilePic(this,uri,imageView);
+                    }
+                });
 
         //go to Main Activity Space(all chat View Area);
         backBtn.setOnClickListener(v -> {
