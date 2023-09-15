@@ -56,7 +56,6 @@
         app:itemIconTint="@color/my_primary"
         app:itemTextColor="@color/my_primary"
         android:layout_height="wrap_content"
-        android:background="@color/black"
         app:menu="@menu/bottom_navigation_menu"
         android:layout_alignParentBottom="true"/>
 
