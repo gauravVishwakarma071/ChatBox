@@ -24,16 +24,21 @@ public class SplashAcivity extends AppCompatActivity {
                     .addOnCompleteListener(task -> {
                         if(task.isSuccessful()){
                             UserModel model = task.getResult().toObject(UserModel.class);
+                            try {
 
-                            Intent mainIntent = new Intent(this,MainActivity.class);
-                            mainIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                            startActivity(mainIntent);
 
-                            Intent intent = new Intent(this, ChatActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            AndroidUtil.passUserModelAsIntent(intent,model);
-                            startActivity(intent);
-                            finish();
+                                Intent mainIntent = new Intent(this, MainActivity.class);
+                                mainIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                startActivity(mainIntent);
+
+                                Intent intent = new Intent(this, ChatActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                AndroidUtil.passUserModelAsIntent(intent, model);
+                                startActivity(intent);
+                                finish();
+                            }catch (Exception e){
+
+                            }
                         }
                     });
         }else{
