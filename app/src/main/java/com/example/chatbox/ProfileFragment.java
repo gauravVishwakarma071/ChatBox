@@ -75,7 +75,7 @@ public class ProfileFragment extends Fragment {
         updateProfileBtn = view.findViewById(R.id.profile_update_btn);
         progressBar = view.findViewById(R.id.profile_progrees_bar);
         logoutBtn = view.findViewById(R.id.logout_btn);
-        
+
         getUserData();
         updateProfileBtn.setOnClickListener(v -> {
          updateBtnClick();
@@ -93,8 +93,6 @@ public class ProfileFragment extends Fragment {
                     }
                 }
             });
-
-
         });
 
         //image picker launcher

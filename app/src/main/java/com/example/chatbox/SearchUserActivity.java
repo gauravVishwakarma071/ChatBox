@@ -1,14 +1,12 @@
 package com.example.chatbox;
 
+import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.ImageButton;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageButton;
 
 import com.example.chatbox.adapter.SearchUserRecyclerAdapter;
 import com.example.chatbox.model.UserModel;
@@ -50,7 +48,6 @@ public class SearchUserActivity extends AppCompatActivity {
         });
     }
     void setupSearchRecyclerView(String searchTerm){
-
         //If matches the usernames it will return all the usernames.
         Query query = FirebaseUtil.allUserCollectionReference()
                 .whereGreaterThanOrEqualTo("username",searchTerm);

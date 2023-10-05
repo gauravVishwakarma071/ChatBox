@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-            Toast.makeText(this, "Still in development phase", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Still in development phase", Toast.LENGTH_SHORT).show();
 
 
         recentChatFrag = new ChatRecentFrag();

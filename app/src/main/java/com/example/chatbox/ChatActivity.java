@@ -124,7 +124,6 @@ public class ChatActivity extends AppCompatActivity {
 
     // creating chat model from this message
     void sendMessageToUser(String message){
-
         chatroomModel.setLastMessageTimestamp(Timestamp.now());
         chatroomModel.setLastMessageSenderId(FirebaseUtil.currentUserId());
         chatroomModel.setLastMessage(message);
